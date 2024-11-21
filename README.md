@@ -1,6 +1,6 @@
 # 💬 Chatbot template
 
-A simple Streamlit chatbot demo based on HKUST's Azure OpenAI API.
+A simple Streamlit chatbot demo for ISOM3400 based on HKUST's Azure OpenAI API.
 Code modified from Streamlit's chatbot template.
 
 View Streamlit Template:
