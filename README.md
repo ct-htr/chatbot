@@ -3,6 +3,7 @@
 A simple Streamlit chatbot demo based on HKUST's Azure OpenAI API.
 Code modified from Streamlit's chatbot template.
 
+View Streamlit Template:
 [![View Streamlit Template](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
 
 ### How to run it on your own machine
