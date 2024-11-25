@@ -30,19 +30,22 @@ if not apiKey:
 
 else:
     try: 
+        
         balanceApi = "https://hkust.azure-api.net/openai-balance/get"
         headers = {"Cache-Control": "no-cache",
                 "api-key": apiKey}
 
         creditInfo = st.empty()
         
-        with requests.get(balanceApi, headers=headers) as response:
-            remainingCredit = response.json()
-            if remainingCredit > 0:
-                creditInfo.info(f"💳Remaining credit for this month: ${remainingCredit}")
-            else:
-                creditInfo.error(f"💳Remaining credit for this month: ${remainingCredit}")
+        # with requests.get(balanceApi, headers=headers) as response: # Get the remaining credits from the specified API. 
+        #     remainingCredit = response.json()
+        #     if remainingCredit > 0:
+        #         creditInfo.info(f"💳Remaining credit for this month: ${remainingCredit}")
+        #     else:
+        #         creditInfo.error(f"💳Remaining credit for this month: ${remainingCredit}")
         st.markdown("---")
+
+        #AzureOpenAI code (AzureOpenAI != OpenAI exactly; there are some slight differences. The version provided by UST is AzureOpenAI.
         client = AzureOpenAI(
         api_key = apiKey,
         api_version = '2024-06-01',
@@ -86,7 +89,7 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": response})
                 
                 
-        with requests.get(balanceApi, headers=headers) as response:
+        with requests.get(balanceApi, headers=headers) as response: # Update remaining credits after sending a message.
             remainingCredit = response.json()
             if remainingCredit > 0:
                 creditInfo.info(f"💳Remaining credit for this month: ${remainingCredit}")
