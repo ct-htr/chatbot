@@ -30,19 +30,12 @@ if not apiKey:
 
 else:
     try: 
-        
         balanceApi = "https://hkust.azure-api.net/openai-balance/get"
         headers = {"Cache-Control": "no-cache",
                 "api-key": apiKey}
 
-        creditInfo = st.empty()
+        creditInfo = st.empty() # Placeholder since Streamlit creates the app from top to bottom according to the lines of code.
         
-        # with requests.get(balanceApi, headers=headers) as response: # Get the remaining credits from the specified API. 
-        #     remainingCredit = response.json()
-        #     if remainingCredit > 0:
-        #         creditInfo.info(f"💳Remaining credit for this month: ${remainingCredit}")
-        #     else:
-        #         creditInfo.error(f"💳Remaining credit for this month: ${remainingCredit}")
         st.markdown("---")
 
         #AzureOpenAI code (AzureOpenAI != OpenAI exactly; there are some slight differences. The version provided by UST is AzureOpenAI.
@@ -92,7 +85,7 @@ else:
         with requests.get(balanceApi, headers=headers) as response: # Update remaining credits after sending a message.
             remainingCredit = response.json()
             if remainingCredit > 0:
-                creditInfo.info(f"💳Remaining credit for this month: ${remainingCredit}")
+                creditInfo.info(f"💳Remaining credit for this month: ${remainingCredit}") # creditInfo is the placeholder space from above.
             else:
                 creditInfo.error(f"💳Remaining credit for this month: ${remainingCredit}")
                 
